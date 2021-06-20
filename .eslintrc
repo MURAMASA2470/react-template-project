@@ -9,6 +9,7 @@
   ],
   "parserOptions": {
     "sourceType": "module",
+    "ecmaVersion": 11,
     "ecmaFeatures": {
       "jsx": true
     }
@@ -21,7 +22,8 @@
     "semi-style": ["error", "first"],
     "no-extra-semi": "error",
     "no-unexpected-multiline": "error",
-    "no-unreachable": "error"
+    "no-unreachable": "error",
+    "react/react-in-jsx-scope": "off"
   },
   "settings": {
     "react": {
