@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Routes from './routes'
+import reportWebVitals from './reportWebVitals.js'
 import './assets/css/index.css'
-import App from './components/pages/App'
-import reportWebVitals from './reportWebVitals'
+
+const loading = () => <p>Loading...</p>
 
 ReactDOM.render(
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>,
-	document.getElementById('root')
+  <React.StrictMode>
+    <Suspense fallback={loading}>
+        <BrowserRouter>
+            <Switch>
+              {Routes.map((route, index) => (
+                <Route key={index} {...route} />
+              ))}
+              <Route render={() => <h1>Not Found</h1>} />
+            </Switch>
+        </BrowserRouter>
+      </Suspense>
+  </React.StrictMode>,
+  document.getElementById('root')
 )
 
 // If you want to start measuring performance in your app, pass a function
